@@ -6,6 +6,7 @@
             "password": "1111",
             "name": "Николай Анисимов",
             "age": "21",
+            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-20.jpg",
             "description": "Сильный и красивый. Умный и добрый. Одним словом - идеал!",
             "friendList": [
                 {
@@ -20,6 +21,7 @@
             "password": "2222",
             "name": "Андрей Белоусов",
             "age": "29",
+            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-139.jpg",
             "description": "Люблю аниме, музыку и смотреть на звезды. Ищу друзей по интересам.",
             "friendList": [
                 {
@@ -46,6 +48,7 @@
             "password": "3333",
             "name": "Анжелика Милославская",
             "age": "31",
+            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-16.jpg",
             "description": "Я прекрасно понимаю, что я не самая лучшая женщина в мире, но это смотря в чьем мире.",
             "friendList": [
                 {
@@ -76,6 +79,7 @@
             "password": "4444",
             "name": "Виктор Эчпочмаков",
             "age": "19",
+            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-15.jpg",
             "description": "Я - человек, для которого уединение жизненно необходимо.",
             "friendList": [
                 {
@@ -94,6 +98,7 @@
             "password": "5555",
             "name": "Ульяна Медведева",
             "age": "26",
+            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-137.jpg",
             "description": "Я никому не буду доказывать, что я хорошая. Пусть мне попробуют доказать, что я плохая.",
             "friendList": [
                 {
@@ -116,6 +121,7 @@
             "password": "6666",
             "name": "Павел Комаров",
             "age": "29",
+            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-36.jpg",
             "description": "Я вообще в этой жизни люблю только пирожки с вишней. Взаимностью не отвечают, но и как люди себя не ведут.",
             "friendList": [
                 {
@@ -142,6 +148,7 @@
             "password": "7777",
             "name": "Виктория Птушкина",
             "age": "34",
+            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-131.jpg",
             "description": "Не слушаю тех, кто говорит, что я трачу жизнь впустую, ведь я хотя бы живу, а кто-то говорит.",
             "friendList": [
                 {
@@ -166,15 +173,18 @@
             "toDos": [
                 {
                     "toDoId": "1",
-                    "title": "Помыть пол"
+                    "title": "Помыть пол",
+                    "isDone": false
                 },
                 {
                     "toDoId": "2",
-                    "title": "Тренировка по баскетболу"
+                    "title": "Тренировка по баскетболу",
+                    "isDone": false
                 },
                 {
                     "toDoId": "3",
-                    "title": "Приготовить ужин"
+                    "title": "Приготовить ужин",
+                    "isDone": false
                 }
             ]
         },
@@ -183,15 +193,18 @@
             "toDos": [
                 {
                     "toDoId": "1",
-                    "title": "Разобрать антресоли"
+                    "title": "Разобрать антресоли",
+                    "isDone": false
                 },
                 {
                     "toDoId": "2",
-                    "title": "Почистить обувь"
+                    "title": "Почистить обувь",
+                    "isDone": false
                 },
                 {
                     "toDoId": "3",
-                    "title": "Сходить ко врачу"
+                    "title": "Сходить ко врачу",
+                    "isDone": false
                 }
             ]
         },
@@ -200,15 +213,18 @@
             "toDos": [
                 {
                     "toDoId": "1",
-                    "title": "Достать мясо из морозилки"
+                    "title": "Достать мясо из морозилки",
+                    "isDone": false
                 },
                 {
                     "toDoId": "2",
-                    "title": "Помыть окна"
+                    "title": "Помыть окна",
+                    "isDone": false
                 },
                 {
                     "toDoId": "3",
-                    "title": "Начать новую жизнь"
+                    "title": "Начать новую жизнь",
+                    "isDone": false
                 }
             ]
         },
@@ -217,15 +233,18 @@
             "toDos": [
                 {
                     "toDoId": "1",
-                    "title": "Купить подарок маме на день рождения"
+                    "title": "Купить подарок маме на день рождения",
+                    "isDone": false
                 },
                 {
                     "toDoId": "2",
-                    "title": "Встреча с друзьями в боулинге"
+                    "title": "Встреча с друзьями в боулинге",
+                    "isDone": false
                 },
                 {
                     "toDoId": "3",
-                    "title": "Посмотреть видеоурок по Vue.js"
+                    "title": "Посмотреть видеоурок по Vue.js",
+                    "isDone": false
                 }
             ]
         },
@@ -234,15 +253,18 @@
             "toDos": [
                 {
                     "toDoId": "1",
-                    "title": "Сделать отчёт о доходах компании"
+                    "title": "Сделать отчёт о доходах компании",
+                    "isDone": false
                 },
                 {
                     "toDoId": "2",
-                    "title": "Провести собеседование на должность начальника отдела продаж"
+                    "title": "Провести собеседование на должность начальника отдела продаж",
+                    "isDone": false
                 },
                 {
                     "toDoId": "3",
-                    "title": "Написать в блог о своём тяжелом дне"
+                    "title": "Написать в блог о своём тяжелом дне",
+                    "isDone": false
                 }
             ]
         },
@@ -251,15 +273,18 @@
             "toDos": [
                 {
                     "toDoId": "1",
-                    "title": "Найти иголку в стоге сена"
+                    "title": "Найти иголку в стоге сена",
+                    "isDone": false
                 },
                 {
                     "toDoId": "2",
-                    "title": "Сделать из мухи слона"
+                    "title": "Сделать из мухи слона",
+                    "isDone": false
                 },
                 {
                     "toDoId": "3",
-                    "title": "Дважды войти в одну и ту же реку"
+                    "title": "Дважды войти в одну и ту же реку",
+                    "isDone": false
                 }
             ]
         },
@@ -268,15 +293,18 @@
             "toDos": [
                 {
                     "toDoId": "1",
-                    "title": "Помыть кота"
+                    "title": "Помыть кота",
+                    "isDone": false
                 },
                 {
                     "toDoId": "2",
-                    "title": "Причесать кота"
+                    "title": "Причесать кота",
+                    "isDone": false
                 },
                 {
                     "toDoId": "3",
-                    "title": "Поцеловать кота в сладкую попку"
+                    "title": "Поцеловать кота в сладкую попку",
+                    "isDone": false
                 }
             ]
         }
