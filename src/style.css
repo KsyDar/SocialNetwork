@@ -1,1 +1,19 @@
+* {
+    box-sizing: border-box;
+}
 
+html {
+    font-size: 10px;
+}
+
+html, body {
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: 0;
+}
+
+body {
+    background: #6e6c794d;
+    background-image: url("./components/icons/headerIcon.png");
+    background-size: 7rem 7rem;
+}
