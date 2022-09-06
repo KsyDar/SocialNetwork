@@ -1,312 +1,311 @@
 {
-    "users": [
+  "users": [
+    {
+      "id": "1",
+      "userName": "Nikolay",
+      "password": "1111",
+      "name": "Николай Анисимов",
+      "age": "21",
+      "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-20.jpg",
+      "description": "Сильный и красивый. Умный и добрый. Одним словом - идеал!",
+      "friendList": [
         {
-            "id": "1",
-            "userName": "Nikolay",
-            "password": "1111",
-            "name": "Николай Анисимов",
-            "age": "21",
-            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-20.jpg",
-            "description": "Сильный и красивый. Умный и добрый. Одним словом - идеал!",
-            "friendList": [
-                {
-                    "name": "Анжелика Милославская",
-                    "id": "3"
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "userName": "Andrey",
-            "password": "2222",
-            "name": "Андрей Белоусов",
-            "age": "29",
-            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-139.jpg",
-            "description": "Люблю аниме, музыку и смотреть на звезды. Ищу друзей по интересам.",
-            "friendList": [
-                {
-                    "name": "Анжелика Милославская",
-                    "id": "3"
-                },
-                {
-                    "name": "Виктор Эчпочмаков",
-                    "id": "4"
-                },
-                {
-                    "name": "Ульяна Медведева",
-                    "id": "5"
-                },
-                {
-                    "name": "Павел Комаров",
-                    "id": "6"
-                }
-            ]
-        },
-        {
-            "id": "3",
-            "userName": "Ajelika",
-            "password": "3333",
-            "name": "Анжелика Милославская",
-            "age": "31",
-            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-16.jpg",
-            "description": "Я прекрасно понимаю, что я не самая лучшая женщина в мире, но это смотря в чьем мире.",
-            "friendList": [
-                {
-                    "name": "Николай Анисимов",
-                    "id": "1"
-                },
-                {
-                    "name": "Андрей Белоусов",
-                    "id": "2"
-                },
-                {
-                    "name": "Павел Комаров",
-                    "id": "6"
-                },
-                {
-                    "name": "Виктория Птушкина",
-                    "id": "7"
-                },
-                {
-                    "name": "Виктор Эчпочмаков",
-                    "id": "4"
-                }
-            ]
-        },
-        {
-            "id": "4",
-            "userName": "Viktor",
-            "password": "4444",
-            "name": "Виктор Эчпочмаков",
-            "age": "19",
-            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-15.jpg",
-            "description": "Я - человек, для которого уединение жизненно необходимо.",
-            "friendList": [
-                {
-                    "name": "Андрей Белоусов",
-                    "id": "2"
-                },
-                {
-                    "name": "Анжелика Милославская",
-                    "id": "3"
-                }
-            ]
-        },
-        {
-            "id": "5",
-            "userName": "Ulyana",
-            "password": "5555",
-            "name": "Ульяна Медведева",
-            "age": "26",
-            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-137.jpg",
-            "description": "Я никому не буду доказывать, что я хорошая. Пусть мне попробуют доказать, что я плохая.",
-            "friendList": [
-                {
-                    "name": "Андрей Белоусов",
-                    "id": "2"
-                },
-                {
-                    "name": "Павел Комаров",
-                    "id": "6"
-                },
-                {
-                    "name": "Виктория Птушкина",
-                    "id": "7"
-                }
-            ]
-        },
-        {
-            "id": "6",
-            "userName": "Pavel",
-            "password": "6666",
-            "name": "Павел Комаров",
-            "age": "29",
-            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-36.jpg",
-            "description": "Я вообще в этой жизни люблю только пирожки с вишней. Взаимностью не отвечают, но и как люди себя не ведут.",
-            "friendList": [
-                {
-                    "name": "Андрей Белоусов",
-                    "id": "2"
-                },
-                {
-                    "name": "Ульяна Медведева",
-                    "id": "5"
-                },
-                {
-                    "name": "Виктория Птушкина",
-                    "id": "7"
-                },
-                {
-                    "name": "Анжелика Милославская",
-                    "id": "3"
-                }
-            ]
-        },
-        {
-            "id": "7",
-            "userName": "Viktoria",
-            "password": "7777",
-            "name": "Виктория Птушкина",
-            "age": "34",
-            "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-131.jpg",
-            "description": "Не слушаю тех, кто говорит, что я трачу жизнь впустую, ведь я хотя бы живу, а кто-то говорит.",
-            "friendList": [
-                {
-                    "name": "Ульяна Медведева",
-                    "id": "5"
-                },
-                {
-                    "name": "Павел Комаров",
-                    "id": "6"
-                },
-                {
-                    "name": "Анжелика Милославская",
-                    "id": "3"
-                }
-            ]
+          "name": "Анжелика Милославская",
+          "id": "3"
         }
-    ],
-
-    "toDoLists": [
+      ]
+    },
+    {
+      "id": "2",
+      "userName": "Andrey",
+      "password": "2222",
+      "name": "Андрей Белоусов",
+      "age": "29",
+      "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-139.jpg",
+      "description": "Люблю аниме, музыку и смотреть на звезды. Ищу друзей по интересам.",
+      "friendList": [
         {
-            "id": "1",
-            "toDos": [
-                {
-                    "toDoId": "1",
-                    "title": "Помыть пол",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "2",
-                    "title": "Тренировка по баскетболу",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "3",
-                    "title": "Приготовить ужин",
-                    "isDone": false
-                }
-            ]
+          "name": "Анжелика Милославская",
+          "id": "3"
         },
         {
-            "id": "2",
-            "toDos": [
-                {
-                    "toDoId": "1",
-                    "title": "Разобрать антресоли",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "2",
-                    "title": "Почистить обувь",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "3",
-                    "title": "Сходить ко врачу",
-                    "isDone": false
-                }
-            ]
+          "name": "Виктор Эчпочмаков",
+          "id": "4"
         },
         {
-            "id": "3",
-            "toDos": [
-                {
-                    "toDoId": "1",
-                    "title": "Достать мясо из морозилки",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "2",
-                    "title": "Помыть окна",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "3",
-                    "title": "Начать новую жизнь",
-                    "isDone": false
-                }
-            ]
+          "name": "Ульяна Медведева",
+          "id": "5"
         },
         {
-            "id": "4",
-            "toDos": [
-                {
-                    "toDoId": "1",
-                    "title": "Купить подарок маме на день рождения",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "2",
-                    "title": "Встреча с друзьями в боулинге",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "3",
-                    "title": "Посмотреть видеоурок по Vue.js",
-                    "isDone": false
-                }
-            ]
-        },
-        {
-            "id": "5",
-            "toDos": [
-                {
-                    "toDoId": "1",
-                    "title": "Сделать отчёт о доходах компании",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "2",
-                    "title": "Провести собеседование на должность начальника отдела продаж",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "3",
-                    "title": "Написать в блог о своём тяжелом дне",
-                    "isDone": false
-                }
-            ]
-        },
-        {
-            "id": "6",
-            "toDos": [
-                {
-                    "toDoId": "1",
-                    "title": "Найти иголку в стоге сена",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "2",
-                    "title": "Сделать из мухи слона",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "3",
-                    "title": "Дважды войти в одну и ту же реку",
-                    "isDone": false
-                }
-            ]
-        },
-        {
-            "id": "7",
-            "toDos": [
-                {
-                    "toDoId": "1",
-                    "title": "Помыть кота",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "2",
-                    "title": "Причесать кота",
-                    "isDone": false
-                },
-                {
-                    "toDoId": "3",
-                    "title": "Поцеловать кота в сладкую попку",
-                    "isDone": false
-                }
-            ]
+          "name": "Павел Комаров",
+          "id": "6"
         }
-    ]
+      ]
+    },
+    {
+      "id": "3",
+      "userName": "Ajelika",
+      "password": "3333",
+      "name": "Анжелика Милославская",
+      "age": "31",
+      "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-16.jpg",
+      "description": "Я прекрасно понимаю, что я не самая лучшая женщина в мире, но это смотря в чьем мире.",
+      "friendList": [
+        {
+          "name": "Николай Анисимов",
+          "id": "1"
+        },
+        {
+          "name": "Андрей Белоусов",
+          "id": "2"
+        },
+        {
+          "name": "Павел Комаров",
+          "id": "6"
+        },
+        {
+          "name": "Виктория Птушкина",
+          "id": "7"
+        },
+        {
+          "name": "Виктор Эчпочмаков",
+          "id": "4"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "userName": "Viktor",
+      "password": "4444",
+      "name": "Виктор Эчпочмаков",
+      "age": "19",
+      "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-15.jpg",
+      "description": "Я - человек, для которого уединение жизненно необходимо.",
+      "friendList": [
+        {
+          "name": "Андрей Белоусов",
+          "id": "2"
+        },
+        {
+          "name": "Анжелика Милославская",
+          "id": "3"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "userName": "Ulyana",
+      "password": "5555",
+      "name": "Ульяна Медведева",
+      "age": "26",
+      "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-137.jpg",
+      "description": "Я никому не буду доказывать, что я хорошая. Пусть мне попробуют доказать, что я плохая.",
+      "friendList": [
+        {
+          "name": "Андрей Белоусов",
+          "id": "2"
+        },
+        {
+          "name": "Павел Комаров",
+          "id": "6"
+        },
+        {
+          "name": "Виктория Птушкина",
+          "id": "7"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "userName": "Pavel",
+      "password": "6666",
+      "name": "Павел Комаров",
+      "age": "29",
+      "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-36.jpg",
+      "description": "Я вообще в этой жизни люблю только пирожки с вишней. Взаимностью не отвечают, но и как люди себя не ведут.",
+      "friendList": [
+        {
+          "name": "Андрей Белоусов",
+          "id": "2"
+        },
+        {
+          "name": "Ульяна Медведева",
+          "id": "5"
+        },
+        {
+          "name": "Виктория Птушкина",
+          "id": "7"
+        },
+        {
+          "name": "Анжелика Милославская",
+          "id": "3"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "userName": "Viktoria",
+      "password": "7777",
+      "name": "Виктория Птушкина",
+      "age": "34",
+      "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-131.jpg",
+      "description": "Не слушаю тех, кто говорит, что я трачу жизнь впустую, ведь я хотя бы живу, а кто-то говорит.",
+      "friendList": [
+        {
+          "name": "Ульяна Медведева",
+          "id": "5"
+        },
+        {
+          "name": "Павел Комаров",
+          "id": "6"
+        },
+        {
+          "name": "Анжелика Милославская",
+          "id": "3"
+        }
+      ]
+    }
+  ],
+  "toDoLists": [
+    {
+      "id": "1",
+      "toDos": [
+        {
+          "toDoId": "1",
+          "title": "Помыть пол",
+          "isDone": true
+        },
+        {
+          "toDoId": "2",
+          "title": "Тренировка по баскетболу",
+          "isDone": false
+        },
+        {
+          "toDoId": "3",
+          "title": "Посмотреть 5 серий аниме",
+          "isDone": false
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "toDos": [
+        {
+          "toDoId": "1",
+          "title": "Разобрать антресоли",
+          "isDone": false
+        },
+        {
+          "toDoId": "2",
+          "title": "Почистить обувь",
+          "isDone": false
+        },
+        {
+          "toDoId": "3",
+          "title": "Сходить ко врачу",
+          "isDone": false
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "toDos": [
+        {
+          "toDoId": "1",
+          "title": "Достать мясо из морозилки",
+          "isDone": false
+        },
+        {
+          "toDoId": "2",
+          "title": "Помыть окна",
+          "isDone": false
+        },
+        {
+          "toDoId": "3",
+          "title": "Начать новую жизнь",
+          "isDone": false
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "toDos": [
+        {
+          "toDoId": "1",
+          "title": "Купить подарок маме на день рождения",
+          "isDone": false
+        },
+        {
+          "toDoId": "2",
+          "title": "Встреча с друзьями в боулинге",
+          "isDone": false
+        },
+        {
+          "toDoId": "3",
+          "title": "Посмотреть видеоурок по Vue.js",
+          "isDone": false
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "toDos": [
+        {
+          "toDoId": "1",
+          "title": "Сделать отчёт о доходах компании",
+          "isDone": false
+        },
+        {
+          "toDoId": "2",
+          "title": "Провести собеседование на должность начальника отдела продаж",
+          "isDone": false
+        },
+        {
+          "toDoId": "3",
+          "title": "Написать в блог о своём тяжелом дне",
+          "isDone": false
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "toDos": [
+        {
+          "toDoId": "1",
+          "title": "Найти иголку в стоге сена",
+          "isDone": false
+        },
+        {
+          "toDoId": "2",
+          "title": "Сделать из мухи слона",
+          "isDone": false
+        },
+        {
+          "toDoId": "3",
+          "title": "Дважды войти в одну и ту же реку",
+          "isDone": false
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "toDos": [
+        {
+          "toDoId": "1",
+          "title": "Помыть кота",
+          "isDone": false
+        },
+        {
+          "toDoId": "2",
+          "title": "Причесать кота",
+          "isDone": false
+        },
+        {
+          "toDoId": "3",
+          "title": "Поцеловать кота в сладкую попку",
+          "isDone": false
+        }
+      ]
+    }
+  ]
 }

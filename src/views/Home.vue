@@ -2,15 +2,23 @@
   <div class="main-content">
     <div class="home-wrapper">
       <div class="home__profile">
-        <h1 class="profile__title">{{ user.name }}</h1>
         <img class="profile__avatar" :src="user.avatar" />
-        <p class="profile__information">Возраст: {{ user.age }}</p>
-        <p class="profile__information">О себе: {{ user.description }}</p>
-        <p class="profile__information">Друзья ({{ friendList.length }})</p>
-        <!-- <router-link >Друзья ({{user.friendList.length}})</router-link> -->
-        <button class="profile__button">Редактировать</button>
+        <div class="profile__information">
+          <h1 class="profile__title">{{ user.name }}</h1>
+          <p class="profile__information__item">
+            <span class="bold-segment">Возраст:</span> {{ user.age }}
+          </p>
+          <p class="profile__information__item">
+            <span class="bold-segment">О себе:</span> {{ user.description }}
+          </p>
+          <p class="profile__information__item">
+            Друзья ({{ friendList.length }})
+          </p>
+          <!-- <router-link >Друзья ({{user.friendList.length}})</router-link> -->
+          <button class="profile__button">Редактировать</button>
+        </div>
       </div>
-      <ToDoList :toDos="toDos" />
+      <ToDoList :toDoList="toDoList" />
     </div>
   </div>
 </template>
@@ -30,10 +38,10 @@ const toDoListStore = useToDoListsStore();
 
 const user = ref({});
 const friendList = ref([]);
-const toDos = ref([]);
+const toDoList = ref([]);
 
 onBeforeMount(async () => {
-  toDos.value = await toDoListStore.getToDoList(props.id);
+  toDoList.value = await toDoListStore.getToDoList(props.id);
   user.value = userStore.currentUser;
   friendList.value = userStore.currentUser.friendList;
 });
@@ -44,14 +52,44 @@ onBeforeMount(async () => {
   padding: 2rem 1rem;
 }
 
+.home__profile {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.profile__avatar {
+  width: 20rem;
+  border-radius: 25%;
+  border: solid 3px #6629cd;
+}
+
+.profile__information {
+  width: 60%;
+  font-size: 1.5rem;
+}
+
 .profile__title {
   margin-top: 0;
   font-size: 2.5rem;
 }
 
-.profile__avatar {
-  width: 20rem;
-  border-radius: 50%;
-  border: solid 2px #6629cd;
+.bold-segment {
+  font-weight: 600;
+  color: #6e4fa3;
+}
+
+.profile__button {
+  margin-top: 3rem;
+  border: solid 2px #8864c6;
+  padding: 3px 7px;
+  border-radius: 7px;
+  font-weight: 600;
+  color: #8864c6;
+}
+
+.profile__button:hover {
+  background: #dac4eb;
+  cursor: pointer;
 }
 </style>
