@@ -38,5 +38,6 @@
   background: #fff;
   margin: 0 25rem;
   min-height: calc(100vh - 4.5rem);
+  padding: 1rem;
 }
 </style>

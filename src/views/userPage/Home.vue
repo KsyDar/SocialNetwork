@@ -1,21 +1,26 @@
 <template>
+  <button class="default-button button-exit" @click="exitFromProfile">Выйти</button>
   <div class="main-content">
     <div class="home-wrapper">
       <div class="home__profile">
         <img class="profile__avatar" :src="user.avatar" />
         <div class="profile__information">
           <h1 class="profile__title">{{ user.name }}</h1>
-          <p class="profile__information__item">
-            <span class="bold-segment">Возраст:</span> {{ user.age }}
-          </p>
-          <p class="profile__information__item">
+          <p><span class="bold-segment">Возраст:</span> {{ user.age }}</p>
+          <p>
             <span class="bold-segment">О себе:</span> {{ user.description }}
           </p>
-          <p class="profile__information__item">
-            Друзья ({{ friendList.length }})
-          </p>
-          <!-- <router-link >Друзья ({{user.friendList.length}})</router-link> -->
-          <button class="profile__button">Редактировать</button>
+          <div class="profile__information__item">
+            <router-link :to="{ name: 'FriendList', params: { id: props.id } }">
+              Друзья
+            </router-link>
+            <button
+              class="default-button button--add"
+              @click="goToChangeProfile"
+            >
+              Редактировать
+            </button>
+          </div>
         </div>
       </div>
       <ToDoList :toDoList="toDoList" />
@@ -25,9 +30,11 @@
 
 <script setup>
 import { onBeforeMount, ref } from "vue";
-import { useUserStore } from "../../platform/store/users/users";
-import { useToDoListsStore } from "../../platform/store/toDoLists/toDoLists";
-import ToDoList from "./../components/ToDoList.vue";
+import { useUserStore } from "../../../platform/store/users/users";
+import { useToDoListsStore } from "../../../platform/store/toDoLists/toDoLists";
+import router from "../../../platform/router";
+
+import ToDoList from "../../components/ToDoList.vue";
 
 const props = defineProps({
   id: String,
@@ -45,16 +52,26 @@ onBeforeMount(async () => {
   user.value = userStore.currentUser;
   friendList.value = userStore.currentUser.friendList;
 });
+
+const goToChangeProfile = () => {
+  router.push({ name: "ChangeProfile", params: { id: props.id } });
+};
+
+const exitFromProfile = () => {
+  router.push({ name: "AuthPage" });
+}
 </script>
 
 <style>
-.home-wrapper {
-  padding: 2rem 1rem;
+.button-exit {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 .home__profile {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-around;
 }
 
@@ -62,11 +79,20 @@ onBeforeMount(async () => {
   width: 20rem;
   border-radius: 25%;
   border: solid 3px #6629cd;
+  margin-right: 1rem;
 }
 
 .profile__information {
   width: 60%;
   font-size: 1.5rem;
+  background: #d3d2d645;
+  border-radius: 7px;
+  padding: 0.5rem;
+}
+
+.profile__information__item {
+  display: flex;
+  align-items: center;
 }
 
 .profile__title {

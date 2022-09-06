@@ -5,13 +5,13 @@
       "userName": "Nikolay",
       "password": "1111",
       "name": "Николай Анисимов",
-      "age": "21",
+      "age": "31",
       "avatar": "https://wonder-day.com/wp-content/uploads/2020/03/Wonder-Day-Ava-20.jpg",
       "description": "Сильный и красивый. Умный и добрый. Одним словом - идеал!",
       "friendList": [
         {
-          "name": "Анжелика Милославская",
-          "id": "3"
+          "id": "5",
+          "name": "Ульяна Медведева"
         }
       ]
     },
@@ -177,8 +177,8 @@
         },
         {
           "toDoId": "2",
-          "title": "Тренировка по баскетболу",
-          "isDone": false
+          "title": "Тренировка по футболу",
+          "isDone": true
         },
         {
           "toDoId": "3",

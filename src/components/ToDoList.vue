@@ -11,16 +11,16 @@
           {{ toDo.title }}
         </label>
         <div class="to-do-list__item__buttons">
-          <button class="to-do-list__button to-do-list__button--change" @click="editToDo(toDo)">
+          <button class="default-button button-change" @click="editToDo(toDo)">
             Изменить
           </button>
-          <button class="to-do-list__button to-do-list__button--delete" @click="deleteToDo(toDo)">
+          <button class="default-button to-do-list__button--delete" @click="deleteToDo(toDo)">
             Удалить
           </button>
         </div>
       </li>
     </ol>
-    <button class="to-do-list__button to-do-list__button--add" @click="addToDo">Добавить</button>
+    <button class="default-button button--add" @click="addToDo">Добавить</button>
   </div>
   <div v-else>Загрузка...</div>
   <ChangeToDoModal
@@ -122,38 +122,5 @@ const changeStatus = (toDo) => {
 
 .is-done {
   text-decoration: line-through;
-}
-
-.to-do-list__button {
-  padding: 3px 7px;
-  border-radius: 7px;
-  font-weight: 600;
-}
-
-.to-do-list__button:hover {
-  cursor: pointer;
-  background: #00000059;
-}
-
-.to-do-list__button--change {
-  margin-right: 2rem;
-  border: solid 2px #8864c6;
-  background: #927dd2;
-  color: #fff;
-}
-
-.to-do-list__button--change:hover {
-  background: #60458f;
-}
-
-.to-do-list__button--add {
-  display: block;
-  margin: 2rem auto;
-  border: solid 2px #8864c6;
-  color: #8864c6;
-}
-
-.to-do-list__button--add:hover {
-  background: #dac4eb;
 }
 </style>

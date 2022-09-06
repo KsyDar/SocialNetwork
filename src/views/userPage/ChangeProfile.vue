@@ -1,0 +1,107 @@
+<template>
+  <div class="main-content">
+    <h1>Редактирование профиля...</h1>
+    <div class="change-profile-wrapper">
+      <label class="change-profile__item"
+        >Логин:<input
+          class="change-profile__input"
+          type="text"
+          v-model="user.userName"
+      /></label>
+      <label class="change-profile__item"
+        >Пароль:<input
+          class="change-profile__input"
+          type="text"
+          v-model="user.password"
+      /></label>
+      <label class="change-profile__item"
+        >Имя:<input
+          type="text"
+          v-model="user.name"
+          class="change-profile__input"
+      /></label>
+      <label class="change-profile__item"
+        >Возраст:<input
+          class="change-profile__input"
+          type="text"
+          v-model="user.age"
+      /></label>
+      <label class="change-profile__item"
+        >О себе:<textarea
+          class="change-profile__input input-textarea"
+          v-model="user.description"
+        ></textarea>
+      </label>
+      <label class="change-profile__item">
+        Аватар:<input
+          class="change-profile__input"
+          type="text"
+          v-model="user.avatar"
+        />
+      </label>
+    </div>
+    <div class="change-profile__buttons">
+      <button class="default-button button-change" @click="saveProfileChanges">Сохранить</button>
+      <button class="default-button" @click="backToHome">Назад</button>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { onBeforeMount, ref } from "vue";
+import { useUserStore } from "../../../platform/store/users/users";
+import router from "../../../platform/router";
+
+const props = defineProps({
+  id: String,
+});
+
+const userStore = useUserStore();
+const user = ref({});
+
+onBeforeMount(async () => {
+  user.value = userStore.currentUser;
+});
+
+const saveProfileChanges = async () => {
+  await userStore.changeProfile(user.value);
+  alert('Изменения сохранены!')
+}
+
+const backToHome = () => {
+  router.push({ name: 'Home', params: {id: props.id} })
+}
+</script>
+
+<style>
+.change-profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.change-profile__item {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #6e4fa3;
+}
+
+.change-profile__input {
+  width: 32rem;
+}
+
+.input-textarea {
+  resize: none;
+  height: 10rem;
+}
+
+.change-profile__buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>

@@ -13,7 +13,7 @@
             </label>
             <label class="login-form__item">
                 Пароль:
-                <input type="text" class="login-form__input" v-model="password"/>
+                <input type="password" class="login-form__input" v-model="password"/>
             </label>
         </div>
         <button class="login-form__button" @click="Login">Войти</button>
