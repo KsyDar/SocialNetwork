@@ -11,16 +11,16 @@
           {{ toDo.title }}
         </label>
         <div class="to-do-list__item__buttons">
-          <button class="default-button button-change" @click="editToDo(toDo)">
+          <button class="button-change" @click="editToDo(toDo)">
             Изменить
           </button>
-          <button class="default-button to-do-list__button--delete" @click="deleteToDo(toDo)">
+          <button class="negative-button" @click="deleteToDo(toDo)">
             Удалить
           </button>
         </div>
       </li>
     </ol>
-    <button class="default-button button--add" @click="addToDo">Добавить</button>
+    <button class="button--add" @click="addToDo">Добавить</button>
   </div>
   <div v-else>Загрузка...</div>
   <ChangeToDoModal
@@ -94,7 +94,7 @@ const changeStatus = (toDo) => {
 <style>
 .to-do-list-wrapper {
   margin-top: 4rem;
-  border: solid 3px #8864c6;
+  border: solid 3px #332025;
   border-radius: 10px;
 }
 
@@ -102,7 +102,7 @@ const changeStatus = (toDo) => {
   margin: 1rem;
   font-size: 2rem;
   font-weight: 600;
-  color: #6e4fa3;
+  color: #ff1f57;
   text-align: center;
 }
 

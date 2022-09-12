@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <img class="header__icon" src="./components/icons/headerIcon.png" />
-    <h1 class="header__title">facepalmbook</h1>
+    <h1 class="header__title">FaceLess</h1>
   </div>
   <router-view></router-view>
 </template>
@@ -13,7 +13,7 @@
 
 <style>
 .header {
-  background: #aa94cf;
+  background: #ff1f57;
   margin: 0;
   height: 4.5rem;
   display: flex;
@@ -21,22 +21,21 @@
 }
 
 .header__icon {
-  width: 3rem;
+  width: 3.5rem;
   height: 3rem;
   margin-left: 1rem;
 }
 
 .header__title {
   margin: 0;
-  margin-left: 1rem;
-  color: #000;
+  color: #fff;
   font-size: 2.5rem;
   font-weight: 100;
 }
 
 .main-content {
-  background: #fff;
-  margin: 0 25rem;
+  background: #f5e4e4;
+  margin: 0 15%;
   min-height: calc(100vh - 4.5rem);
   padding: 1rem;
 }

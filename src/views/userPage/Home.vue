@@ -1,5 +1,7 @@
 <template>
-  <button class="default-button button-exit" @click="exitFromProfile">Выйти</button>
+  <button class="negative-button button-exit" @click="exitFromProfile">
+    Выйти
+  </button>
   <div class="main-content">
     <div class="home-wrapper">
       <div class="home__profile">
@@ -15,7 +17,7 @@
               Друзья
             </router-link>
             <button
-              class="default-button button--add"
+              class="profile__button"
               @click="goToChangeProfile"
             >
               Редактировать
@@ -58,7 +60,7 @@ const goToChangeProfile = () => {
 const exitFromProfile = () => {
   router.push({ name: "AuthPage" });
   userStore.currentUser = null;
-}
+};
 </script>
 
 <style>
@@ -66,6 +68,10 @@ const exitFromProfile = () => {
   position: absolute;
   top: 1rem;
   right: 1rem;
+}
+
+.button-exit:hover {
+  border: solid 3px #fff;
 }
 
 .home__profile {
@@ -77,7 +83,7 @@ const exitFromProfile = () => {
 .profile__avatar {
   width: 20rem;
   border-radius: 25%;
-  border: solid 3px #6629cd;
+  border: solid 3px #ff1f57;
   margin-right: 1rem;
 }
 
@@ -91,30 +97,34 @@ const exitFromProfile = () => {
 
 .profile__information__item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 .profile__title {
   margin-top: 0;
   font-size: 2.5rem;
+  color: #ff1f57;
 }
 
 .bold-segment {
   font-weight: 600;
-  color: #6e4fa3;
+  color: #332025;
 }
 
 .profile__button {
-  margin-top: 3rem;
-  border: solid 2px #8864c6;
-  padding: 3px 7px;
-  border-radius: 7px;
+  width: 100%;
+  border: none;
+  background: #ff1f57;
+  color: #fff;
+  padding: 5px;
+  margin: 1rem auto;
   font-weight: 600;
-  color: #8864c6;
+  border-radius: 5px;
 }
 
 .profile__button:hover {
-  background: #dac4eb;
+  background: #703e4bbf;
   cursor: pointer;
 }
 </style>

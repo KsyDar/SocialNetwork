@@ -3,45 +3,44 @@
     <div class="login-form">
       <h1 class="login-form__title">Авторизация</h1>
       <div class="login-form__item-wrapper">
-          <p v-if="!isAuthorised"
-          class="login-form__failed"
-          >
-          Неправильное имя пользователя или пароль</p>
-          <label class="login-form__item">
-              Логин:
-              <input type="text" class="login-form__input" v-model="userName"/>
-            </label>
-            <label class="login-form__item">
-                Пароль:
-                <input type="password" class="login-form__input" v-model="password"/>
-            </label>
-        </div>
-        <button class="login-form__button" @click="Login">Войти</button>
+        <p v-if="!isAuthorised" class="login-form__failed">
+          Неправильное имя пользователя или пароль
+        </p>
+        <label class="login-form__item">
+          Логин:
+          <input type="text" class="login-form__input" v-model="userName" />
+        </label>
+        <label class="login-form__item">
+          Пароль:
+          <input type="password" class="login-form__input" v-model="password" />
+        </label>
+      </div>
+      <button class="negative-button" @click="Login">Войти</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useUserStore } from '../../platform/store/users/users';
-import { ref } from 'vue';
-import router from '../../platform/router';
+import { useUserStore } from "../../platform/store/users/users";
+import { ref } from "vue";
+import router from "../../platform/router";
 
-const userStore = useUserStore()
+const userStore = useUserStore();
 
-const userName = ref("")
-const password = ref("")
-const userId = ref("")
+const userName = ref("");
+const password = ref("");
+const userId = ref("");
 
-const isAuthorised = ref(true)
+const isAuthorised = ref(true);
 
 const Login = async () => {
-    userId.value = await userStore.login(userName.value, password.value)
-    if (userId.value) {
-        router.push({ name: 'Home', params: { id: userId.value } })
-    } else {
-        isAuthorised.value = false
-    }
-}
+  userId.value = await userStore.login(userName.value, password.value);
+  if (userId.value) {
+    router.push({ name: "Home", params: { id: userId.value } });
+  } else {
+    isAuthorised.value = false;
+  }
+};
 </script>
 
 <style>
@@ -57,6 +56,7 @@ const Login = async () => {
   margin-top: 3rem;
   font-size: 2.5rem;
   font-weight: 400;
+  color: #ff1f57;
 }
 
 .login-form__item-wrapper {
@@ -64,11 +64,12 @@ const Login = async () => {
   flex-direction: column;
   align-items: flex-end;
   margin-top: 2rem;
+  color: #332025;
 }
 
 .login-form__failed {
-    margin: 0;
-    color: #ff0000;
+  margin: 0;
+  color: #ff0000;
 }
 
 .login-form__item {
@@ -79,19 +80,5 @@ const Login = async () => {
 
 .login-form__input {
   background: #6e6c794d;
-}
-
-.login-form__button {
-  border-radius: 14px;
-  padding: 5px;
-  color: #000;
-  border: solid 2px #726091;
-  background: #aa94cf;
-}
-
-.login-form__button:hover {
-    cursor: pointer;
-    border: solid 2px #413654;
-    background: #776595;
 }
 </style>

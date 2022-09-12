@@ -1,6 +1,6 @@
 <template>
   <div class="main-content">
-    <h1>Список друзей</h1>
+    <h1 class="friend-list__title">Список друзей</h1>
     <div class="friend-list-wrapper">
       <ul class="friend-list">
         <li
@@ -9,20 +9,20 @@
           :key="friend.id"
         >
           {{ friend.name }}
-          <button class="default-button" @click="deleteFriend(friend)">
+          <button class="button-change friend-list__button" @click="deleteFriend(friend)">
             Удалить
           </button>
         </li>
       </ul>
       <div class="friend-list__buttons">
-        <button class="default-button button-change" @click="backToHome">
-          Назад
-        </button>
         <button
-          class="default-button friend-list__button button--add"
+          class="button--add friend-list__button"
           @click="openModal"
         >
           Добавить
+        </button>
+        <button class="negative-button" @click="backToHome">
+          Назад
         </button>
       </div>
     </div>
@@ -68,6 +68,10 @@ const backToHome = () => {
   padding: 0;
   list-style-type: none;
   font-size: 1.5rem;
+}
+
+.friend-list__title {
+  color: #ff1f57;
 }
 
 .friend-list__item {

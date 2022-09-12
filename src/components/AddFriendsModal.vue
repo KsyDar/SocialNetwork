@@ -5,7 +5,7 @@
       <div class="search-form">
         <input type="text" class="modal__input" v-model="searchQuery" />
         <button
-          class="default-button button--search"
+          class="button-change button--search"
           @click="searching(searchQuery)"
         >
           Поиск
@@ -13,13 +13,13 @@
       </div>
       <div v-if="resultUser" class="results">
         Найдено: {{ resultUser.name }}
-        <button class="default-button button--add-friend" @click="addFriend">
+        <button class="button--add" @click="addFriend">
           Добавить
         </button>
       </div>
       <div v-else-if="resultUser === undefined" class="results">Пользователь не найден</div>
       <button
-        class="default-button button-change friends-modal__button"
+        class="negative-button friends-modal__button"
         @click="closeModal"
       >
         Закрыть
@@ -86,11 +86,6 @@ const closeModal = () => {
   width: 94%;
   border: solid 2px #aa94cf4f;
   padding: 1rem;
-}
-
-.button--add-friend {
-  border: solid 2px #8864c6;
-  color: #8864c6;
 }
 
 .friends-modal__button {

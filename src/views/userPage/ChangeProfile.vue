@@ -1,6 +1,6 @@
 <template>
   <div class="main-content">
-    <h1>Редактирование профиля...</h1>
+    <h1 class="change-profile__title">Редактирование профиля...</h1>
     <div class="change-profile-wrapper">
       <label class="change-profile__item"
         >Логин:<input
@@ -41,8 +41,8 @@
       </label>
     </div>
     <div class="change-profile__buttons">
-      <button class="default-button button-change" @click="saveProfileChanges">Сохранить</button>
-      <button class="default-button" @click="backToHome">Назад</button>
+      <button class="button-change" @click="saveProfileChanges">Сохранить</button>
+      <button class="negative-button" @click="backToHome">Назад</button>
     </div>
   </div>
 </template>
@@ -74,6 +74,10 @@ const backToHome = () => {
 </script>
 
 <style>
+.change-profile__title {
+  color: #ff1f57;
+}
+
 .change-profile-wrapper {
   display: flex;
   flex-direction: column;
@@ -87,11 +91,11 @@ const backToHome = () => {
   justify-content: space-between;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #6e4fa3;
+  color: #332025;
 }
 
 .change-profile__input {
-  width: 32rem;
+  width: 85%;
 }
 
 .input-textarea {

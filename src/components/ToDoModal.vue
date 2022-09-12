@@ -5,12 +5,12 @@
       <input type="text" class="modal__input" v-model="title" />
       <div class="modal__buttons">
         <button
-          class="default-button button-change"
+          class="button-change"
           @click="saveChanges"
         >
           Сохранить
         </button>
-        <button class="default-button" @click="cancelChange">Отмена</button>
+        <button class="negative-button" @click="cancelChange">Отмена</button>
       </div>
     </div>
   </div>
