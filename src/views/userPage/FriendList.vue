@@ -5,7 +5,7 @@
       <ul class="friend-list">
         <li
           class="friend-list__item"
-          v-for="friend of friendList"
+          v-for="friend of friendList.friends"
           :key="friend.id"
         >
           {{ friend.name }}
@@ -15,19 +15,24 @@
         </li>
       </ul>
       <div class="friend-list__buttons">
-        <button class="default-button button-change" @click="backToHome">Назад</button>
-        <button class="default-button friend-list__button button--add" @click="openModal">
+        <button class="default-button button-change" @click="backToHome">
+          Назад
+        </button>
+        <button
+          class="default-button friend-list__button button--add"
+          @click="openModal"
+        >
           Добавить
         </button>
       </div>
     </div>
   </div>
-  <AddFriendsModal v-if="isModalOpen" @closeModal="openModal" />
+  <AddFriendsModal v-if="isModalOpen" @closeModal="openModal" :isAdd="!isAdd" />
 </template>
 
 <script setup>
 import { onBeforeMount, ref } from "vue";
-import { useUserStore } from "../../../platform/store/users/users";
+import { useFriendListsStore } from "../../../platform/store/users/friendLists";
 import router from "../../../platform/router";
 import AddFriendsModal from "../../components/AddFriendsModal.vue";
 
@@ -35,29 +40,26 @@ const props = defineProps({
   id: String,
 });
 
-const userStore = useUserStore();
-const friendList = ref(null);
-
-onBeforeMount(() => {
-  friendList.value = userStore.currentUser.friendList;
+const friendListStore = useFriendListsStore();
+const friendList = ref([]);
+onBeforeMount(async () => {
+  friendList.value = await friendListStore.getFriendList(props.id);
 });
 
-const isModalOpen = ref(false);
+const isAdd = ref(false)
+const deleteFriend = async (friend) => {
+  friendList.value.friends.splice(friendList.value.friends.indexOf(friend), 1);
+  await friendListStore.changeFriendList(friendList.value);
+  await friendListStore.mutualChange(friend, isAdd.value);
+};
 
+const isModalOpen = ref(false);
 const openModal = () => {
   isModalOpen.value = !isModalOpen.value;
 };
 
-const deleteFriend = async (friend) => {
-  userStore.currentUser.friendList.splice(
-    userStore.currentUser.friendList.indexOf(friend),
-    1
-  );
-  await userStore.changeProfile(userStore.currentUser);
-};
-
 const backToHome = () => {
-  router.push({ name: 'Home', params: {id: props.id} })
+  router.push({ name: "Home", params: { id: props.id } });
 };
 </script>
 

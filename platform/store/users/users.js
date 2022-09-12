@@ -30,18 +30,6 @@ export const useUserStore = defineStore('users', {
             catch (err) {
                 alert('Ой! Что-то пошло не так..')
             }
-        },
-
-        async addFriends(newFriendList) {
-            try {
-                await axios.put(
-                    `http://localhost:3000/users/${currentUser.id}`,
-                    currentUser
-                )
-            }
-            catch (err) {
-                return false
-            }
         }
     }
 })

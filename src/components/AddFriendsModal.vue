@@ -11,12 +11,13 @@
           Поиск
         </button>
       </div>
-      <div v-if="result" class="results">
-        Найдено: {{ result }}
+      <div v-if="resultUser" class="results">
+        Найдено: {{ resultUser.name }}
         <button class="default-button button--add-friend" @click="addFriend">
           Добавить
         </button>
       </div>
+      <div v-else-if="resultUser === undefined" class="results">Пользователь не найден</div>
       <button
         class="default-button button-change friends-modal__button"
         @click="closeModal"
@@ -30,28 +31,35 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
 import { useUserStore } from "../../platform/store/users/users";
+import { useFriendListsStore } from "../../platform/store/users/friendLists";
 
 const props = defineProps({
   id: String,
+  isAdd: Boolean
 });
 const emits = defineEmits(["closeModal"]);
 
 const userStore = useUserStore();
-
 const searchQuery = ref(null);
-const result = ref(null);
-const friendId = ref("");
-
+const resultUser = ref(null)
 const searching = (searchQuery) => {
-  const resultUser = userStore.users.find((el) => el.name === searchQuery);
-  result.value = resultUser.name;
-  friendId.value = resultUser.id
+  resultUser.value = userStore.users.find((el) => el.name === searchQuery);
 };
 
+
+const friendListStore = useFriendListsStore();
 const addFriend = async () => {
-  userStore.currentUser.friendList.push({id: `${friendId.value}`, name: result});
-  await userStore.changeProfile(userStore.currentUser);
+  const repeat = friendListStore.currentfriendList.friends.find(el => el.id === resultUser.value.id)
+  if (repeat) {
+    alert('Вы уже дружите!')
+  }
+  else {
+    friendListStore.currentfriendList.friends.push({id: `${resultUser.value.id}`, name: resultUser.value.name});
+    await friendListStore.changeFriendList(friendListStore.currentfriendList);
+    await friendListStore.mutualChange(resultUser.value, props.isAdd)
+  }
 };
+
 
 const closeModal = () => {
   emits("closeModal");

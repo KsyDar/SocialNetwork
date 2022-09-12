@@ -42,7 +42,6 @@ const Login = async () => {
         isAuthorised.value = false
     }
 }
-
 </script>
 
 <style>

@@ -44,13 +44,11 @@ const userStore = useUserStore();
 const toDoListStore = useToDoListsStore();
 
 const user = ref({});
-const friendList = ref([]);
 const toDoList = ref([]);
 
 onBeforeMount(async () => {
   toDoList.value = await toDoListStore.getToDoList(props.id);
   user.value = userStore.currentUser;
-  friendList.value = userStore.currentUser.friendList;
 });
 
 const goToChangeProfile = () => {
@@ -59,6 +57,7 @@ const goToChangeProfile = () => {
 
 const exitFromProfile = () => {
   router.push({ name: "AuthPage" });
+  userStore.currentUser = null;
 }
 </script>
 
