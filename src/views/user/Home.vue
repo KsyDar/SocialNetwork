@@ -5,7 +5,7 @@
   <div class="main-content">
     <div class="home-wrapper">
       <div class="home__profile">
-        <img class="profile__avatar" :src="user.avatar" />
+        <img class="profile__avatar" :src="user.avatar" alt="" />
         <div class="profile__information">
           <h1 class="profile__title">{{ user.name }}</h1>
           <p><span class="bold-segment">Возраст:</span> {{ user.age }}</p>
@@ -16,10 +16,7 @@
             <router-link :to="{ name: 'FriendList', params: { id: props.id } }">
               Друзья
             </router-link>
-            <button
-              class="profile__button"
-              @click="goToChangeProfile"
-            >
+            <button class="profile__button" @click="goToChangeProfile">
               Редактировать
             </button>
           </div>
@@ -31,35 +28,29 @@
 </template>
 
 <script setup>
-import { onBeforeMount, ref } from "vue";
+import { computed, watch } from "vue";
+import router from "../../../platform/router";
 import { useUserStore } from "../../../platform/store/users/users";
 import { useToDoListsStore } from "../../../platform/store/toDoLists/toDoLists";
-import router from "../../../platform/router";
-
 import ToDoList from "../../components/ToDoList.vue";
+
+const exitFromProfile = () => {
+  router.back();
+};
 
 const props = defineProps({
   id: String,
 });
+watch(() => props.id, exitFromProfile);
 
 const userStore = useUserStore();
 const toDoListStore = useToDoListsStore();
 
-const user = ref({});
-const toDoList = ref([]);
-
-onBeforeMount(async () => {
-  toDoList.value = await toDoListStore.getToDoList(props.id);
-  user.value = userStore.currentUser;
-});
+const user = computed(() => userStore.currentUser);
+const toDoList = computed(() => toDoListStore.currentToDoList);
 
 const goToChangeProfile = () => {
   router.push({ name: "ChangeProfile", params: { id: props.id } });
-};
-
-const exitFromProfile = () => {
-  router.push({ name: "AuthPage" });
-  userStore.currentUser = null;
 };
 </script>
 
@@ -126,5 +117,9 @@ const exitFromProfile = () => {
 .profile__button:hover {
   background: #703e4bbf;
   cursor: pointer;
+}
+
+.profile__friend-list {
+  font-weight: 100;
 }
 </style>

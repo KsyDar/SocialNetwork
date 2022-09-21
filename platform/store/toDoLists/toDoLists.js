@@ -8,22 +8,25 @@ export const useToDoListsStore = defineStore('toDoLists', {
     state: () => ({ toDoLists: [], currentToDoList: null }),
     actions: {
         async getToDoList(userId) {
-            const res = await axios.get("http://localhost:3000/toDoLists");
-            this.toDoLists = res.data;
-            try {
-                this.currentToDoList = this.toDoLists.find(toDoList => toDoList.id === userId)
-                return this.currentToDoList
+            if (this.currentToDoList === null) {
+                const res = await axios.get("http://localhost:3000/toDoLists");
+                this.toDoLists = res.data;
+                try {
+                    this.currentToDoList = this.toDoLists.find(toDoList => toDoList.id === userId)
+                }
+                catch (err) {
+                    console.log("There is no to-do list with this id");
+                }
             }
-            catch (err) {
-                console.log("There is no to-do list with this id");
-            }
+            return this.currentToDoList
         },
 
         async changeToDoList(currentToDoList) {
             try {
+                this.currentToDoList = currentToDoList
                 await axios.put(
                     `http://localhost:3000/toDoLists/${currentToDoList.id}`,
-                    currentToDoList
+                    this.currentToDoList
                 )
             }
             catch (err) {

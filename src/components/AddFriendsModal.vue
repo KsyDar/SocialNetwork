@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-wrapper">
+  <div class="modal-wrapper" @click.self="closeModal">
     <div class="modal">
       <h3 class="modal__title">Давай дружить!</h3>
       <div class="search-form">
@@ -33,10 +33,6 @@ import { ref, onBeforeMount } from "vue";
 import { useUserStore } from "../../platform/store/users/users";
 import { useFriendListsStore } from "../../platform/store/users/friendLists";
 
-const props = defineProps({
-  id: String,
-  isAdd: Boolean
-});
 const emits = defineEmits(["closeModal"]);
 
 const userStore = useUserStore();
@@ -56,7 +52,7 @@ const addFriend = async () => {
   else {
     friendListStore.currentfriendList.friends.push({id: `${resultUser.value.id}`, name: resultUser.value.name});
     await friendListStore.changeFriendList(friendListStore.currentfriendList);
-    await friendListStore.mutualChange(resultUser.value, props.isAdd)
+    await friendListStore.mutualChange(resultUser.value, true)
   }
 };
 

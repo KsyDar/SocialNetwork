@@ -1,12 +1,24 @@
 <template>
   <div class="header">
-    <img class="header__icon" src="./components/icons/headerIcon.png" />
-    <h1 class="header__title">FaceLess</h1>
+    <div class="header__logo" @click="goToHome">
+      <img class="header__icon" src="./assets/icons/headerIcon.png" alt=""/>
+      <h1 class="header__title">FaceLess</h1>
+    </div>
   </div>
   <router-view></router-view>
 </template>
 
 <script setup>
+import router from "../platform/router";
+import { useUserStore } from "../platform/store/users/users";
+
+const userStore = useUserStore();
+
+const goToHome = () => {
+  if (userStore.currentUser) {
+    router.push({ name: "Home", params: { id: userStore.currentUser.id } });
+  }
+};
 </script>
 
 
@@ -16,6 +28,12 @@
   background: #ff1f57;
   margin: 0;
   height: 4.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  cursor: pointer;
   display: flex;
   align-items: center;
 }

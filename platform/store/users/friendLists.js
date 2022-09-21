@@ -52,6 +52,11 @@ export const useFriendListsStore = defineStore('friendLists', {
             catch (err) {
                 alert('Ой! Что-то пошло не так..')
             }
+        },
+
+        getNewFriendList(id) {
+            const newFriendList = this.friendLists.find(friendList => friendList.id === id)
+            return newFriendList
         }
     }
 })

@@ -3,7 +3,7 @@
     <div class="login-form">
       <h1 class="login-form__title">Авторизация</h1>
       <div class="login-form__item-wrapper">
-        <p v-if="!isAuthorised" class="login-form__failed">
+        <p v-if="isError" class="login-form__failed">
           Неправильное имя пользователя или пароль
         </p>
         <label class="login-form__item">
@@ -15,32 +15,41 @@
           <input type="password" class="login-form__input" v-model="password" />
         </label>
       </div>
-      <button class="negative-button" @click="Login">Войти</button>
+      <button class="negative-button enter-button" @click="Login">Войти</button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useUserStore } from "../../platform/store/users/users";
-import { ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import router from "../../platform/router";
+import { useUserStore } from "../../platform/store/users/users";
+import { useToDoListsStore } from "../../platform/store/toDoLists/toDoLists";
+import { useFriendListsStore } from "../../platform/store/users/friendLists";
 
 const userStore = useUserStore();
+const toDoListStore = useToDoListsStore();
+const friendListStore = useFriendListsStore();
 
 const userName = ref("");
 const password = ref("");
-const userId = ref("");
-
-const isAuthorised = ref(true);
+let userId = "";
+const isError = ref(false);
 
 const Login = async () => {
-  userId.value = await userStore.login(userName.value, password.value);
-  if (userId.value) {
-    router.push({ name: "Home", params: { id: userId.value } });
+  userId = await userStore.login(userName.value, password.value);
+  if (userId) {
+    router.push({ name: "Home", params: { id: userId } });
+    toDoListStore.getToDoList(userId);
+    friendListStore.getFriendList(userId);
   } else {
-    isAuthorised.value = false;
+    isError.value = true;
   }
 };
+
+onBeforeMount(() => {
+  userStore.exit();
+});
 </script>
 
 <style>
@@ -52,8 +61,7 @@ const Login = async () => {
 }
 
 .login-form__title {
-  margin: 0;
-  margin-top: 3rem;
+  margin: 3rem 0 0 5rem;
   font-size: 2.5rem;
   font-weight: 400;
   color: #ff1f57;
@@ -80,5 +88,9 @@ const Login = async () => {
 
 .login-form__input {
   background: #6e6c794d;
+}
+
+.enter-button {
+  margin-left: 5rem;
 }
 </style>

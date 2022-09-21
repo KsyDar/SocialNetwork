@@ -1,13 +1,24 @@
 <template>
   <div class="to-do-list-wrapper" v-if="toDoList">
     <h3 class="to-do-list__title">Список дел</h3>
-    <ol class="to-do-list">
-      <li class="to-do-list__item" v-for="toDo of toDoList.toDos" :key="toDo.toDoId">
+    <div v-if="toDoList.toDos.length === 0" class="zero-list">
+      У вас нет ни одного дела!
+    </div>
+    <ol class="to-do-list" v-else>
+      <li
+        class="to-do-list__item"
+        v-for="toDo of toDoList.toDos"
+        :key="toDo.toDoId"
+      >
         <label
           class="to-do-list__item__title"
           :class="{ 'is-done': toDo.isDone }"
         >
-          <input type="checkbox" v-model="toDo.isDone" @click="changeStatus(toDo)"/>
+          <input
+            type="checkbox"
+            v-model="toDo.isDone"
+            @click="changeStatus(toDo)"
+          />
           {{ toDo.title }}
         </label>
         <div class="to-do-list__item__buttons">
@@ -34,7 +45,7 @@
 <script setup>
 import { ref } from "vue";
 import ChangeToDoModal from "./ToDoModal.vue";
-import { useToDoListsStore } from "./../../platform/store/toDoLists/toDoLists"
+import { useToDoListsStore } from "./../../platform/store/toDoLists/toDoLists";
 
 const props = defineProps({
   toDoList: Object,
@@ -48,9 +59,9 @@ async function changeToDoList(currentToDoList) {
 const selectedTodo = ref(null);
 
 const deleteToDo = (toDo) => {
-  const toDos = props.toDoList.toDos
+  const toDos = props.toDoList.toDos;
   toDos.splice(toDos.indexOf(toDo), 1);
-  changeToDoList(props.toDoList)
+  changeToDoList(props.toDoList);
 };
 
 const editToDo = (toDo) => {
@@ -58,10 +69,14 @@ const editToDo = (toDo) => {
 };
 
 const saveChanges = (info) => {
-  const toDos = props.toDoList.toDos
+  const toDos = props.toDoList.toDos;
   selectedTodo.value = null;
   if (info.isAdd) {
-    const newToDo = { ...info.toDo, toDoId: `${toDos.length + 1}`, isDone: false };
+    const newToDo = {
+      ...info.toDo,
+      toDoId: `${toDos.length + 1}`,
+      isDone: false,
+    };
     toDos.push(newToDo);
   } else {
     const editTodo = toDos.find((x) => x.toDoId === info.toDo.toDoId);
@@ -70,7 +85,7 @@ const saveChanges = (info) => {
       toDos.splice(toDos.indexOf(editTodo), 1, editTodo);
     }
   }
-  changeToDoList(props.toDoList)
+  changeToDoList(props.toDoList);
 };
 
 const addToDo = () => {
@@ -87,7 +102,7 @@ const cancelChange = () => {
 
 const changeStatus = (toDo) => {
   toDo.isDone = !toDo.isDone;
-  changeToDoList(props.toDoList)
+  changeToDoList(props.toDoList);
 };
 </script>
 

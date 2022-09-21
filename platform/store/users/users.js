@@ -20,6 +20,11 @@ export const useUserStore = defineStore('users', {
             }
         },
 
+        exit() {
+            this.users = []
+            this.currentUser = null
+        },
+
         async changeProfile(currentUser) {
             try {
                 await axios.put(
@@ -30,6 +35,11 @@ export const useUserStore = defineStore('users', {
             catch (err) {
                 alert('Ой! Что-то пошло не так..')
             }
+        },
+
+        getFriend(id) {
+            const friend = this.users.find(user => user.id === id)
+            return friend
         }
     }
 })

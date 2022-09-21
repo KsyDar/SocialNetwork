@@ -3,7 +3,7 @@
 }
 
 html {
-    font-size: 10px;
+    font-size: 62.5%;
 }
 
 html, body {
@@ -30,6 +30,11 @@ input[type="text"]:focus {
     border: solid 2px #ff1f57;
 }
 
+.zero-list {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
 /* BUTTONS */
 
 .button-change {
@@ -49,8 +54,6 @@ input[type="text"]:focus {
 
 .button--add {
     display: block;
-    margin: 2rem auto;
-    padding: 3px 7px;
     border: none;
     border-radius: 7px;
     background: #ff1f57;

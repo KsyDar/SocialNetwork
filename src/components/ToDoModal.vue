@@ -1,16 +1,16 @@
 <template>
-  <div class="modal-wrapper">
+  <div class="modal-wrapper" @click.self="cancelChange">
     <div class="modal">
       <h3 class="modal__title">Редактирование...</h3>
       <input type="text" class="modal__input" v-model="title" />
       <div class="modal__buttons">
+        <button class="negative-button" @click="cancelChange">Отмена</button>
         <button
-          class="button-change"
+          class="button-change to-do__save-button"
           @click="saveChanges"
         >
           Сохранить
         </button>
-        <button class="negative-button" @click="cancelChange">Отмена</button>
       </div>
     </div>
   </div>
@@ -47,5 +47,9 @@ const cancelChange = () => {
   justify-content: space-between;
   width: 94%;
   margin: 1rem;
+}
+
+.to-do__save-button {
+  margin: 0;
 }
 </style>
