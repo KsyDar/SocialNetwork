@@ -60,12 +60,28 @@ const userStore = useUserStore();
 const user = ref({});
 
 onBeforeMount(async () => {
-  user.value = userStore.currentUser;
+  user.value = {
+    id: props.id,
+    userName: userStore.currentUser.userName,
+    password: userStore.currentUser.password,
+    name: userStore.currentUser.name,
+    age: userStore.currentUser.age,
+    avatar: userStore.currentUser.avatar,
+    description: userStore.currentUser.description
+  };
 });
 
+
 const saveProfileChanges = async () => {
-  await userStore.changeProfile(user.value);
-  alert('Изменения сохранены!')
+  if(!user.value.userName || !user.value.password || 
+  !user.value.name || !user.value.age || 
+  !user.value.avatar || !user.value.description) {
+    alert("Все поля должны быть заполнены!")
+  }
+  else {
+    await userStore.changeProfile(user.value);
+    alert('Изменения сохранены!')
+  }
 }
 
 const backToHome = () => {

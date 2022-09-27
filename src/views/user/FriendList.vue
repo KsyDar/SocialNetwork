@@ -9,10 +9,10 @@
           v-for="friend of friendList.friends"
           :key="friend.id"
         >
-        <router-link :to="{ name: 'Guest', params: { friendId: friend.id } }">
+        <router-link :to="{ name: 'Home', params: { id: friend.id } }">
           {{ friend.name }}
         </router-link>
-          <button class="button-change friend-list__button" @click="deleteFriend(friend)">
+          <button class="button-change friend-list__button" @click="changeFriendList(friend, false)">
             Удалить
           </button>
         </li>
@@ -30,12 +30,13 @@
       </div>
     </div>
   </div>
-  <AddFriendsModal v-if="isModalOpen" @closeModal="openModal" />
+  <AddFriendsModal v-if="isModalOpen" @closeModal="openModal" @addFriend="changeFriendList"/>
 </template>
 
 <script setup>
-import { computed, onBeforeMount, ref } from "vue";
+import { computed, ref } from "vue";
 import { useFriendListsStore } from "../../../platform/store/users/friendLists";
+import { useUserStore } from "../../../platform/store/users/users";
 import router from "../../../platform/router";
 import AddFriendsModal from "../../components/AddFriendsModal.vue";
 
@@ -43,14 +44,47 @@ const props = defineProps({
   id: String,
 });
 
+const userStore = useUserStore();
 const friendListStore = useFriendListsStore();
 const friendList = computed(() => friendListStore.currentfriendList);
 
 
-const deleteFriend = async (friend) => {
-  friendList.value.friends.splice(friendList.value.friends.indexOf(friend), 1);
-  await friendListStore.changeFriendList(friendList.value);
-  await friendListStore.mutualChange(friend, false);
+const changeFriendList = async (friend, isAdd) => {
+  let friendsCurrent = []
+  friendList.value.friends.forEach(el => {
+    friendsCurrent.push(el)
+  });
+  
+  let friendsFriend = []
+  let anotherFriendList = friendListStore.getNewFriendList(friend.id);
+  anotherFriendList.friends.forEach(el => {
+    friendsFriend.push(el)
+  });
+
+  let currentfriendList = {
+    id: props.id,
+    friends: friendsCurrent
+  };
+  let friendFriendList = {
+    id: friend.id,
+    friends: friendsFriend
+  };
+
+  if (!isAdd) {
+    currentfriendList.friends.splice(currentfriendList.friends.indexOf(friend), 1);
+    friendFriendList.friends.splice(friendFriendList.friends.findIndex(el => el.id === props.id), 1);
+  }
+  else {
+    let repeat = currentfriendList.friends.find(el => el.id === friend.id)
+    if(repeat) {
+      alert("Вы уже дружите!")
+    }
+    else {
+      currentfriendList.friends.push(friend);
+      friendFriendList.friends.push({id: props.id, name: `${userStore.currentUser.name}`});
+    }
+  }
+  await friendListStore.changeFriendList(currentfriendList, friendFriendList);
 };
 
 const isModalOpen = ref(false);

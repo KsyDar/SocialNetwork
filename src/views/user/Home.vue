@@ -12,7 +12,7 @@
           <p>
             <span class="bold-segment">О себе:</span> {{ user.description }}
           </p>
-          <div class="profile__information__item">
+          <div class="profile__information__item" v-if="isCurrentUser">
             <router-link :to="{ name: 'FriendList', params: { id: props.id } }">
               Друзья
             </router-link>
@@ -20,38 +20,58 @@
               Редактировать
             </button>
           </div>
+          <div class="profile__information__item" v-else>
+            <span class="bold-segment">Друзья:</span>
+            <ul>
+              <li v-for="friend of friends" :key="friend.id">
+                <router-link :to="{ name: 'Home', params: {id: friend.id} }">{{ friend.name }}</router-link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      <ToDoList :toDoList="toDoList" />
+      <ToDoList :toDoList="toDoList" :isCurrentUser="isCurrentUser"/>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, watch } from "vue";
+import { computed } from "vue";
 import router from "../../../platform/router";
 import { useUserStore } from "../../../platform/store/users/users";
 import { useToDoListsStore } from "../../../platform/store/toDoLists/toDoLists";
+import { useFriendListsStore } from "../../../platform/store/users/friendLists";
 import ToDoList from "../../components/ToDoList.vue";
 
+const userStore = useUserStore();
+const toDoListStore = useToDoListsStore();
+const friendListStore = useFriendListsStore();
+
 const exitFromProfile = () => {
-  router.back();
+  router.push({path: '/'});
 };
 
 const props = defineProps({
   id: String,
 });
-watch(() => props.id, exitFromProfile);
 
-const userStore = useUserStore();
-const toDoListStore = useToDoListsStore();
 
-const user = computed(() => userStore.currentUser);
-const toDoList = computed(() => toDoListStore.currentToDoList);
+
+const user = computed(() => userStore.getFriendById(props.id));
+const isCurrentUser = computed(() => userStore.currentUser.id === props.id);
+const friends = computed(
+  () => friendListStore.getNewFriendList(props.id).friends
+);
+const toDoList = computed(() => toDoListStore.getNewToDoList(props.id));
 
 const goToChangeProfile = () => {
   router.push({ name: "ChangeProfile", params: { id: props.id } });
 };
+
+
+// const goToFriend = (id) => {
+//   router.push({ name: 'Home', params: {id: id} });
+// };
 </script>
 
 <style>

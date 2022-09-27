@@ -13,7 +13,7 @@
             Друзья:
             <ul>
               <li v-for="friend of friendList.friends" :key="friend.id">
-                <router-link :to="{ name: 'Guest', params: { friendId: friend.id } }">{{ friend.name }}</router-link>
+                <a href="" @click="goToFriend(friend.id)">{{ friend.name }}</a>
               </li>
             </ul>
           </div>
@@ -33,10 +33,19 @@ const props = defineProps({
 })
 
 const userStore = useUserStore()
-const user = computed(() => userStore.getFriend(props.friendId))
+const user = computed(() => userStore.getFriendById(props.friendId))
 
 const friendListsStore = useFriendListsStore()
 const friendList = computed(() => friendListsStore.getNewFriendList(props.friendId))
+
+function goToFriend(id) {
+  if(props.friendId === userStore.currentUser.id) {
+    router.push({ name: 'Home'})
+  }
+  else {
+    router.push({ name: 'Guest', params: {id: id }})
+  }
+}
 </script>
 
 <style scoped>

@@ -23,8 +23,9 @@ const routes = [
     children: [
       {
         name: 'Home',
-        path: 'home',
+        path: '/home/:id',
         component: Home,
+        props: true,
       },
       {
         name: 'ChangeProfile',

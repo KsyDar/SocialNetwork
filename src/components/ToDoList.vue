@@ -15,13 +15,14 @@
           :class="{ 'is-done': toDo.isDone }"
         >
           <input
-            type="checkbox"
-            v-model="toDo.isDone"
-            @click="changeStatus(toDo)"
+          type="checkbox"
+          v-model="toDo.isDone"
+          @click="changeStatus(toDo)"
+          v-if="props.isCurrentUser"
           />
           {{ toDo.title }}
         </label>
-        <div class="to-do-list__item__buttons">
+        <div class="to-do-list__item__buttons" v-if="props.isCurrentUser">
           <button class="button-change" @click="editToDo(toDo)">
             Изменить
           </button>
@@ -31,7 +32,7 @@
         </div>
       </li>
     </ol>
-    <button class="button--add" @click="addToDo">Добавить</button>
+    <button class="button--add" @click="addToDo" v-if="props.isCurrentUser">Добавить</button>
   </div>
   <div v-else>Загрузка...</div>
   <ChangeToDoModal
@@ -49,6 +50,7 @@ import { useToDoListsStore } from "./../../platform/store/toDoLists/toDoLists";
 
 const props = defineProps({
   toDoList: Object,
+  isCurrentUser: Boolean,
 });
 
 const toDoListStore = useToDoListsStore();

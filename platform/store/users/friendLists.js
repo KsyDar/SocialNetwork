@@ -21,33 +21,18 @@ export const useFriendListsStore = defineStore('friendLists', {
             }
         },
 
-        async changeFriendList(currentfriendList) {
+        async changeFriendList(currentfriendList, friendFriendList) {
             try {
+                this.currentfriendList = currentfriendList;
                 await axios.put(
                     `http://localhost:3000/friendLists/${currentfriendList.id}`,
                     currentfriendList
-                )
-            }
-            catch (err) {
-                alert('Ой! Что-то пошло не так..')
-            }
-        },
+                );
 
-        async mutualChange(friend, isAdd) {
-            try {
-                const userStore = useUserStore()
-                const user = userStore.currentUser
-                let anotherFriendlist = this.friendLists.find(friendList => friendList.id === friend.id);
-                if (!isAdd) {
-                    anotherFriendlist.friends = anotherFriendlist.friends.filter(el => el.id !== user.id)
-                }
-                else {
-                    anotherFriendlist.friends.push({ id: `${user.id}`, name: `${user.name}` })
-                }
                 await axios.put(
-                    `http://localhost:3000/friendLists/${friend.id}`,
-                    anotherFriendlist
-                )
+                    `http://localhost:3000/friendLists/${friendFriendList.id}`,
+                    friendFriendList
+                );                
             }
             catch (err) {
                 alert('Ой! Что-то пошло не так..')

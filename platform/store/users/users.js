@@ -27,6 +27,7 @@ export const useUserStore = defineStore('users', {
 
         async changeProfile(currentUser) {
             try {
+                this.currentUser = currentUser
                 await axios.put(
                     `http://localhost:3000/users/${currentUser.id}`,
                     currentUser
@@ -37,8 +38,13 @@ export const useUserStore = defineStore('users', {
             }
         },
 
-        getFriend(id) {
+        getFriendById(id) {
             const friend = this.users.find(user => user.id === id)
+            return friend
+        },
+
+        getFriendByName(name) {
+            const friend = this.users.find(user => user.name === name)
             return friend
         }
     }

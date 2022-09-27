@@ -32,6 +32,16 @@ export const useToDoListsStore = defineStore('toDoLists', {
             catch (err) {
                 console.log("There is no to-do list with this id");
             }
+        },
+
+        getNewToDoList(id) {
+            try {
+                let newToDoList = this.toDoLists.find(list => list.id === id)
+                return newToDoList
+            }
+            catch (err) {
+                console.log("There is no to-do list with this id");
+            }
         }
     }
 })

@@ -31,29 +31,24 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
 import { useUserStore } from "../../platform/store/users/users";
-import { useFriendListsStore } from "../../platform/store/users/friendLists";
 
-const emits = defineEmits(["closeModal"]);
+const emits = defineEmits(["closeModal", "addFriend"]);
 
-const userStore = useUserStore();
+const userStore = useUserStore()
 const searchQuery = ref(null);
-const resultUser = ref(null)
+const resultUser = ref(null);
+
 const searching = (searchQuery) => {
-  resultUser.value = userStore.users.find((el) => el.name === searchQuery);
+  let userDetected = userStore.getFriendByName(searchQuery)
+  resultUser.value = {
+    id: userDetected.id,
+    name: userDetected.name
+  }
 };
 
 
-const friendListStore = useFriendListsStore();
-const addFriend = async () => {
-  const repeat = friendListStore.currentfriendList.friends.find(el => el.id === resultUser.value.id)
-  if (repeat) {
-    alert('Вы уже дружите!')
-  }
-  else {
-    friendListStore.currentfriendList.friends.push({id: `${resultUser.value.id}`, name: resultUser.value.name});
-    await friendListStore.changeFriendList(friendListStore.currentfriendList);
-    await friendListStore.mutualChange(resultUser.value, true)
-  }
+const addFriend = () => {
+  emits("addFriend", resultUser.value, true);
 };
 
 
